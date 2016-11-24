@@ -1,0 +1,27 @@
+{
+  "name": "black-lamp/yii2-email-templates",
+  "description": "Module for adding email templates across dashboard",
+  "keywords": ["yii2", "email", "template", "delivery"],
+  "type": "yii2-extension",
+  "license": "GNU Public License",
+  "support": {
+    "source": "https://github.com/black-lamp/yii2-email-templates",
+    "issues": "https://github.com/black-lamp/yii2-email-templates/issues"
+  },
+  "require": {
+    "yiisoft/yii2": ">=2.0.4",
+    "yiisoft/yii2-bootstrap": "*"
+  },
+  "authors": [
+    {
+      "name": "Vladimir Kuprienko",
+      "email": "vldmr.kuprienko@gmail.com",
+      "role": "Creator of extension"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "bl\\emailTemplates\\": ""
+    }
+  }
+}
