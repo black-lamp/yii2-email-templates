@@ -82,7 +82,7 @@ class DefaultController extends Controller
         }
 
         /** @var LanguageProviderInterface $provider */
-        $provider = $this->module->container->get('backend\bl\providers\LanguageProviderInterface');
+        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
         $languages = $provider->getLanguages();
 
         $current_language = null;
@@ -150,7 +150,7 @@ class DefaultController extends Controller
         }
 
         /** @var LanguageProviderInterface $provider */
-        $provider = $this->module->container->get('backend\bl\providers\LanguageProviderInterface');
+        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
         $languages = $provider->getLanguages();
 
         $current_language = null;
