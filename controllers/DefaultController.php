@@ -114,15 +114,30 @@ class DefaultController extends Controller
      */
     public function actionEdit($templateId, $languageId = null)
     {
+        /** @var LanguageProviderInterface $provider */
+        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
+        $languages = $provider->getLanguages();
+
+        $current_language = null;
+        if ($languageId == null) {
+            reset($languages);
+            $current_language = [key($languages) => current($languages)];
+        }
+        else {
+            $current_language = [$languageId => $languages[$languageId]];
+        }
+
         $template = EmailTemplate::findOne($templateId);
-        $translation = null;
+        $translation = EmailTemplateTranslation::findOne([
+            'template_id' => $templateId,
+            'language_id' => key($current_language)
+        ]);
         $errors = [];
 
-        if($languageId != null) {
-            $translation = EmailTemplateTranslation::findOne([
-                'template_id' => $templateId,
-                'language_id' => $languageId
-            ]);
+        if($translation == null) {
+            $translation = new EmailTemplateTranslation();
+            $translation->template_id = $templateId;
+            $translation->language_id = key($current_language);
         }
 
         if(Yii::$app->request->isPost) {
@@ -147,32 +162,6 @@ class DefaultController extends Controller
             }
 
             $errors = array_merge($template->getErrors(), $translation->getErrors());
-        }
-
-        /** @var LanguageProviderInterface $provider */
-        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
-        $languages = $provider->getLanguages();
-
-        $current_language = null;
-        if ($languageId == null) {
-            reset($languages);
-            $current_language = [key($languages) => current($languages)];
-        }
-        else {
-            $current_language = [$languageId => $languages[$languageId]];
-        }
-
-        if($languageId == null) {
-            $translation = EmailTemplateTranslation::findOne([
-                'template_id' => $templateId,
-                'language_id' => key($current_language)
-            ]);
-        }
-
-        if($translation == null) {
-            $translation = new EmailTemplateTranslation();
-            $translation->template_id = $templateId;
-            $translation->language_id = key($current_language);
         }
 
         return $this->render('edit', [
