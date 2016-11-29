@@ -27,3 +27,12 @@ Backend module for create, edit and delete email templates
      ],
 ]
 ```
+#### Add component to application config
+```php
+'components' => [
+    // ...
+    'emailTemplates' => [
+        'class' => bl\emailTemplates\components\EmailTemplate::className()
+    ],
+]
+```

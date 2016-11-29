@@ -10,7 +10,6 @@ use yii\db\ActiveRecord;
  * @property string $key
  *
  * @property EmailTemplateTranslation[] $translations
- * @property EmailTemplateTranslation $translation
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
@@ -54,14 +53,6 @@ class EmailTemplate extends ActiveRecord
      */
     public function getTranslations()
     {
-        return $this->hasMany(EmailTemplateTranslation::className(), ['template_id', 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTranslation()
-    {
-        return $this->hasOne(EmailTemplateTranslation::className(), ['template_id', $this->id]);
+        return $this->hasMany(EmailTemplateTranslation::className(), ['template_id' => 'id']);
     }
 }
