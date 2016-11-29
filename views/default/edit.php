@@ -3,9 +3,9 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-use backend\bl\EmailTemplates;
-use backend\bl\entities\EmailTemplate;
-use backend\bl\entities\EmailTemplateTranslation;
+use bl\emailTemplates\EmailTemplates;
+use bl\emailTemplates\entities\EmailTemplate;
+use bl\emailTemplates\entities\EmailTemplateTranslation;
 
 /**
  * View for Default controller
