@@ -23,7 +23,13 @@ Backend module for create, edit and delete email templates
 'modules' => [
      // ...
      'email-templates' => [
-         'class' => bl\emailTemplates\EmailTemplates::className()
+         'class' => bl\emailTemplates\EmailTemplates::className(),
+         'languageProvider' => [
+            'class' => bl\emailTemplates\providers\DbLanguageProvider::className(),
+            'arModel' => bl\multilang\entities\Language::className(),
+            'idField' => 'id',
+            'nameField' => 'name'
+         ]
      ],
 ]
 ```

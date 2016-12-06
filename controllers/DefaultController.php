@@ -1,6 +1,7 @@
 <?php
 namespace bl\emailTemplates\controllers;
 
+use bl\emailTemplates\EmailTemplates;
 use Yii;
 use yii\base\Exception;
 use yii\helpers\Url;
@@ -25,6 +26,20 @@ class DefaultController extends Controller
      * @inheritdoc
      */
     public $defaultAction = 'list';
+
+    /**
+     * @var LanguageProviderInterface
+     */
+    protected $_languageProvider;
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct($id, EmailTemplates $module, LanguageProviderInterface $languageProvider, $config = [])
+    {
+        $this->_languageProvider = $languageProvider;
+        parent::__construct($id, $module, $config);
+    }
 
     /**
      * Rendering list of templates
@@ -57,16 +72,16 @@ class DefaultController extends Controller
             $data = Yii::$app->request->post();
 
             $template->load($data);
-            $translation->load($data);
 
             if($template->validate()) {
-                $transaction = Yii::$app->db->beginTransaction();
+                $transaction = EmailTemplate::getDb()->beginTransaction();
                 try {
-                    $template->save();
+                    $template->insert();
+                    $translation->load($data);
                     $translation->template_id = $template->id;
 
                     if($translation->validate()) {
-                        $translation->save();
+                        $translation->insert();
                         $transaction->commit();
 
                         return $this->redirect(Url::toRoute('list'));
@@ -81,9 +96,7 @@ class DefaultController extends Controller
             $errors = array_merge($template->getErrors(), $translation->getErrors());
         }
 
-        /** @var LanguageProviderInterface $provider */
-        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
-        $languages = $provider->getLanguages();
+        $languages = $this->_languageProvider->getLanguages();
 
         $current_language = null;
         if ($languageId == null) {
@@ -114,9 +127,7 @@ class DefaultController extends Controller
      */
     public function actionEdit($templateId, $languageId = null)
     {
-        /** @var LanguageProviderInterface $provider */
-        $provider = $this->module->container->get('bl\emailTemplates\providers\LanguageProviderInterface');
-        $languages = $provider->getLanguages();
+        $languages = $this->_languageProvider->getLanguages();
 
         $current_language = null;
         if ($languageId == null) {
@@ -136,7 +147,7 @@ class DefaultController extends Controller
 
         if($translation == null) {
             $translation = new EmailTemplateTranslation();
-            $translation->template_id = $templateId;
+            $translation->template_id = $template->id;
             $translation->language_id = key($current_language);
         }
 
@@ -147,9 +158,9 @@ class DefaultController extends Controller
             $translation->load($data);
 
             if($template->validate() && $translation->validate()) {
-                $transaction = Yii::$app->db->beginTransaction();
+                $transaction = EmailTemplate::getDb()->beginTransaction();
                 try {
-                    $template->save();
+                    $template->update();
                     $translation->save();
                     $transaction->commit();
 

@@ -35,26 +35,11 @@ class EmailTemplates extends Module
     public $languageProvider;
 
     /**
-     * @var Container
-     */
-    private $_container;
-
-    /**
-     * @return Container
-     */
-    public function getContainer()
-    {
-        return $this->_container;
-    }
-
-    /**
      * @inheritdoc
      */
     public function init()
     {
         parent::init();
-
-        $this->_container = new Container();
         $this->registerDependencies();
     }
 
@@ -67,7 +52,7 @@ class EmailTemplates extends Module
             throw new InvalidConfigException("Invalid configuration of '$this->id' module");
         }
 
-        $this->_container->set('bl\emailTemplates\providers\LanguageProviderInterface', $this->languageProvider);
+        Yii::$container->set('bl\emailTemplates\providers\LanguageProviderInterface', $this->languageProvider);
     }
 
     public static function t($category, $message, $params = [], $language = null)
