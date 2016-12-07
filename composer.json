@@ -8,6 +8,12 @@
     "source": "https://github.com/black-lamp/yii2-email-templates",
     "issues": "https://github.com/black-lamp/yii2-email-templates/issues"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
   "require": {
     "yiisoft/yii2": ">=2.0.4",
     "yiisoft/yii2-bootstrap": "*"
@@ -21,7 +27,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "bl\\emailTemplates\\": ""
+      "bl\\emailTemplates\\": "src"
     }
   }
 }

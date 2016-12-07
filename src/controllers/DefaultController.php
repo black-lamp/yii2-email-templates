@@ -35,7 +35,7 @@ class DefaultController extends Controller
     /**
      * @inheritdoc
      */
-    public function __construct($id, EmailTemplates $module, LanguageProviderInterface $languageProvider, $config = [])
+    public function __construct($id, EmailTemplates $module, LanguageProviderInterface $languageProvider,  $config = [])
     {
         $this->_languageProvider = $languageProvider;
         parent::__construct($id, $module, $config);
@@ -77,6 +77,7 @@ class DefaultController extends Controller
                 $transaction = EmailTemplate::getDb()->beginTransaction();
                 try {
                     $template->insert();
+
                     $translation->load($data);
                     $translation->template_id = $template->id;
 
