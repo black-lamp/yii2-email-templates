@@ -4,9 +4,10 @@ namespace bl\emailTemplates\providers;
 /**
  * Interface for language provider
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  */
 interface LanguageProviderInterface
 {
@@ -15,4 +16,16 @@ interface LanguageProviderInterface
      * Example ['1' => 'English', '2' => 'Russian', ...]
      */
     public function getLanguages();
+
+    /**
+     * @return array with default language
+     * Example ['1' => 'English']
+     */
+    public function getDefault();
+
+    /**
+     * @param integer $id ID of the language
+     * @return string name of the language
+     */
+    public function getNameByID($id);
 }

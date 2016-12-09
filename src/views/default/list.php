@@ -3,17 +3,18 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 use bl\emailTemplates\EmailTemplates;
-use bl\emailTemplates\entities\EmailTemplate;
 
 /**
- * View for Default controller
+ * View for rendering list of email templates
  *
  * @var yii\web\View $this
- * @var EmailTemplate $templates
+ * @var bl\emailTemplates\models\entities\EmailTemplate $templates
+ * @var array $language
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  */
 
 $this->title = EmailTemplates::t('breadcrumbs', 'Email templates list');
@@ -50,7 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td>
                             <?= Html::a(
                                 EmailTemplates::t('backend', 'Edit'),
-                                Url::toRoute(['edit', 'templateId' => $template->id]),
+                                Url::toRoute([
+                                    'edit',
+                                    'templateId' => $template->id,
+                                    'languageId' => key($language)
+                                ]),
                                 ['class' => 'btn btn-xs btn-warning']
                             ) ?>
                             <?= Html::a(
@@ -65,7 +70,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </table>
             <?= Html::a(
                 EmailTemplates::t('backend', 'Create new template'),
-                Url::toRoute('create'),
+                Url::toRoute([
+                    'create',
+                    'languageId' => key($language)
+                ]),
                 ['class' => 'btn btn-success pull-right']
             ) ?>
         </div>

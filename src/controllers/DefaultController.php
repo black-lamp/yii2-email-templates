@@ -1,23 +1,26 @@
 <?php
 namespace bl\emailTemplates\controllers;
 
-use bl\emailTemplates\EmailTemplates;
 use Yii;
 use yii\base\Exception;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 
-use bl\emailTemplates\entities\EmailTemplate;
-use bl\emailTemplates\entities\EmailTemplateTranslation;
+use bl\emailTemplates\models\forms\CreateForm;
+use bl\emailTemplates\models\forms\EditForm;
+use bl\emailTemplates\models\forms\TemplateForm;
+use bl\emailTemplates\models\entities\EmailTemplate;
+use bl\emailTemplates\EmailTemplates;
 use bl\emailTemplates\providers\LanguageProviderInterface;
 
 /**
  * Default controller for the `EmailTemplatesModule` module
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  *
  */
 class DefaultController extends Controller
@@ -51,71 +54,50 @@ class DefaultController extends Controller
         $templates = EmailTemplate::find()->all();
 
         return $this->render('list', [
-            'templates' => $templates
+            'templates' => $templates,
+            'language' => $this->_languageProvider->getDefault()
+        ]);
+    }
+
+    /**
+     * Method for rendering form for create and edit of template
+     *
+     * @param TemplateForm $form
+     * @param string $view
+     * @return string
+     */
+    protected function renderForm($form, $view)
+    {
+        $errors = [];
+        if(Yii::$app->request->isPost) {
+            $form->load(Yii::$app->request->post());
+            if(!$form->save()) {
+                $errors = $form->getErrors();
+            }
+        }
+
+        $currentLanguage = [
+            $form->languageId => $this->_languageProvider->getNameByID($form->languageId)
+        ];
+
+        return $this->render($view, [
+            'model' => $form,
+            'errors' => $errors,
+            'currentLanguage' => $currentLanguage
         ]);
     }
 
     /**
      * Creation of template
      *
-     * @param null|integer $languageId
+     * @param integer $languageId
      * @return string
      * @throws Exception
      */
-    public function actionCreate($languageId = null)
+    public function actionCreate($languageId)
     {
-        $template = new EmailTemplate();
-        $translation = new EmailTemplateTranslation();
-        $errors = [];
-
-        if(Yii::$app->request->isPost) {
-            $data = Yii::$app->request->post();
-
-            $template->load($data);
-
-            if($template->validate()) {
-                $transaction = EmailTemplate::getDb()->beginTransaction();
-                try {
-                    $template->insert();
-
-                    $translation->load($data);
-                    $translation->template_id = $template->id;
-
-                    if($translation->validate()) {
-                        $translation->insert();
-                        $transaction->commit();
-
-                        return $this->redirect(Url::toRoute('list'));
-                    }
-                }
-                catch (Exception $ex) {
-                    $transaction->rollBack();
-                    throw  $ex;
-                }
-            }
-
-            $errors = array_merge($template->getErrors(), $translation->getErrors());
-        }
-
-        $languages = $this->_languageProvider->getLanguages();
-
-        $current_language = null;
-        if ($languageId == null) {
-            reset($languages);
-            $current_language = [key($languages) => current($languages)];
-        }
-        else {
-            $current_language = [$languageId => $languages[$languageId]];
-        }
-
-        return $this->render('create', [
-            'template' => $template,
-            'translation' => $translation,
-            'errors' => $errors,
-
-            'languages' => $languages,
-            'current_language' => $current_language
-        ]);
+        $createForm = new CreateForm(['languageId' => $languageId]);
+        return $this->renderForm($createForm, 'create');
     }
 
     /**
@@ -128,62 +110,11 @@ class DefaultController extends Controller
      */
     public function actionEdit($templateId, $languageId = null)
     {
-        $languages = $this->_languageProvider->getLanguages();
-
-        $current_language = null;
-        if ($languageId == null) {
-            reset($languages);
-            $current_language = [key($languages) => current($languages)];
-        }
-        else {
-            $current_language = [$languageId => $languages[$languageId]];
-        }
-
-        $template = EmailTemplate::findOne($templateId);
-        $translation = EmailTemplateTranslation::findOne([
-            'template_id' => $templateId,
-            'language_id' => key($current_language)
+        $editForm = new EditForm([
+            'templateId' => $templateId,
+            'languageId' => $languageId
         ]);
-        $errors = [];
-
-        if($translation == null) {
-            $translation = new EmailTemplateTranslation();
-            $translation->template_id = $template->id;
-            $translation->language_id = key($current_language);
-        }
-
-        if(Yii::$app->request->isPost) {
-            $data = Yii::$app->request->post();
-
-            $template->load($data);
-            $translation->load($data);
-
-            if($template->validate() && $translation->validate()) {
-                $transaction = EmailTemplate::getDb()->beginTransaction();
-                try {
-                    $template->update();
-                    $translation->save();
-                    $transaction->commit();
-
-                    return $this->redirect(Url::toRoute('list'));
-                }
-                catch (Exception $ex) {
-                    $transaction->rollBack();
-                    throw  $ex;
-                }
-            }
-
-            $errors = array_merge($template->getErrors(), $translation->getErrors());
-        }
-
-        return $this->render('edit', [
-            'template' => $template,
-            'translation' => $translation,
-            'errors' => $errors,
-
-            'languages' => $languages,
-            'current_language' => $current_language
-        ]);
+        return $this->renderForm($editForm, 'edit');
     }
 
     /**

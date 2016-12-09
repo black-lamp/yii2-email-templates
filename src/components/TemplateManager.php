@@ -5,16 +5,17 @@ use yii\base\Object;
 use yii\db\ActiveQuery;
 
 use bl\emailTemplates\data\Template;
-use bl\emailTemplates\entities\EmailTemplate as TemplateEntity;
+use bl\emailTemplates\models\entities\EmailTemplate as TemplateEntity;
 
 /**
  * Component for work with email templates
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  */
-class EmailTemplate extends Object
+class TemplateManager extends Object
 {
     /**
      * Getting email template model by key
@@ -34,12 +35,7 @@ class EmailTemplate extends Object
             }])
             ->one();
 
-        $model = new Template(
-            $template->translations[0]->subject,
-            $template->translations[0]->body
-        );
-
-        return $model;
+        return Template::buildTemplate($template->translations[0]);
     }
 
     /**
@@ -56,11 +52,6 @@ class EmailTemplate extends Object
             ->with('translations')
             ->one();
 
-        $models = [];
-        foreach($templates->translations as $template) {
-            $models[] = new Template($template->subject, $template->body);
-        }
-
-        return $models;
+        return Template::buildTemplates($templates->translations);
     }
 }

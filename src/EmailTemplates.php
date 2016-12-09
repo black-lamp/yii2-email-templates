@@ -4,14 +4,16 @@ namespace bl\emailTemplates;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Module;
-use yii\di\Container;
 
 /**
  * EmailTemplates module definition class
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @property array $languageProvider
+ *
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  */
 class EmailTemplates extends Module
 {
@@ -21,12 +23,12 @@ class EmailTemplates extends Module
     public $controllerNamespace = 'bl\emailTemplates\controllers';
 
     /**
-     * @var array field of language entity
+     * @var array of configuration for language provider
      * Example
      * ```php
      * 'languageProvider' => [
      *      'class' => bl\emailTemplates\providers\DbLanguageProvider::className(),
-     *      'arModel' => bl\multilang\entities\Language::className(),
+     *      'tableName' => 'language',
      *      'idField' => 'id',
      *      'nameField' => 'name'
      * ]
@@ -55,8 +57,16 @@ class EmailTemplates extends Module
         Yii::$container->set('bl\emailTemplates\providers\LanguageProviderInterface', $this->languageProvider);
     }
 
+    /**
+     * Wrapper for default method `Yii::t()`
+     * @param string $category
+     * @param string $message
+     * @param array $params
+     * @param null $language
+     * @return string returns result of `Yii::t()` method
+     */
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('email.templates' . $category, $message, $params, $language);
+        return Yii::t('email.templates.' . $category, $message, $params, $language);
     }
 }

@@ -1,7 +1,9 @@
 <?php
-namespace bl\emailTemplates\entities;
+namespace bl\emailTemplates\models\entities;
 
 use yii\db\ActiveRecord;
+
+use bl\emailTemplates\EmailTemplates;
 
 /**
  * This is the model class for table "email_template".
@@ -31,9 +33,7 @@ class EmailTemplate extends ActiveRecord
     public function rules()
     {
         return [
-            [['key'], 'required'],
-            [['key'], 'string', 'max' => 255],
-            [['key'], 'unique'],
+            [['key'], 'unique']
         ];
     }
 
@@ -43,8 +43,8 @@ class EmailTemplate extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'key' => 'Key',
+            'id' => EmailTemplates::t('model', 'ID'),
+            'key' => EmailTemplates::t('model', 'Key'),
         ];
     }
 

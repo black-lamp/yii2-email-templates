@@ -1,7 +1,9 @@
 <?php
-namespace bl\emailTemplates\entities;
+namespace bl\emailTemplates\models\entities;
 
 use yii\db\ActiveRecord;
+
+use bl\emailTemplates\EmailTemplates;
 
 /**
  * This is the model class for table "email_template_translation".
@@ -31,33 +33,14 @@ class EmailTemplateTranslation extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
-        return [
-            [['template_id', 'language_id'], 'required'],
-            [['template_id', 'language_id'], 'integer'],
-            [['body'], 'string'],
-            [['subject'], 'string', 'max' => 255],
-            [
-                ['template_id'], 'exist',
-                'skipOnError' => true,
-                'targetClass' => EmailTemplate::className(),
-                'targetAttribute' => ['template_id' => 'id']
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'template_id' => 'Template ID',
-            'language_id' => 'Language ID',
-            'subject' => 'Subject',
-            'body' => 'Body',
+            'id' => EmailTemplates::t('model', 'ID'),
+            'template_id' => EmailTemplates::t('model', 'Template ID'),
+            'language_id' => EmailTemplates::t('model', 'Language ID'),
+            'subject' => EmailTemplates::t('model', 'Subject'),
+            'body' => EmailTemplates::t('model', 'Body'),
         ];
     }
 

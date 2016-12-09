@@ -2,9 +2,17 @@ black-lamp/email-templates commits history
 ------------------------------------------
 
 ## [Under development]
-
+### Added
+- Added widgets
+- Added models for forms
+- Added new method to `bl\emailTemplates\providers\LanguageProviderInterface`
+- Added new methods to `bl\emailTemplates\data\Template`
+### Changed
+- Using `Query` instead `ActiveRecord` in `bl\emailTemplates\providers\DbLanguageProvider`
+- Active Record models replaced from `bl\emailTemplates\entities` namespace to `bl\emailTemplates\models\entities`
+- Component `bl\emailTemplates\components\EmailTemplate` renamed to `TemplateManager`
+- Changes in project structure
 - Code refactoring
-- Changes project structure
 
 ## [1.0.2] - 2016-11-29
 

@@ -1,15 +1,18 @@
 <?php
 namespace bl\emailTemplates\data;
 
+use bl\emailTemplates\models\entities\EmailTemplateTranslation;
+
 /**
  * Model of email template
  *
  * @property string $subject
  * @property string $body
  *
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @license GNU Public License
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+ * @copyright Copyright (c) Vladimir Kuprienko
  */
 class Template
 {
@@ -122,5 +125,32 @@ class Template
     public static function parseTemplate($source, $params)
     {
         return strtr($source, $params);
+    }
+
+    /**
+     * Builder for Template from Active Record model
+     *
+     * @param EmailTemplateTranslation $model
+     * @return Template
+     */
+    public static function buildTemplate($model)
+    {
+        return new self($model->subject, $model->body);
+    }
+
+    /**
+     * Builder for array of Template from Active Record model
+     *
+     * @param EmailTemplateTranslation[] $models
+     * @return array
+     */
+    public static function buildTemplates($models)
+    {
+        $result = [];
+        foreach($models as $model) {
+            $result = self::buildTemplate($model);
+        }
+
+        return $result;
     }
 }
