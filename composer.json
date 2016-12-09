@@ -18,6 +18,10 @@
     "yiisoft/yii2": ">=2.0.4",
     "yiisoft/yii2-bootstrap": "*"
   },
+  "require-dev": {
+    "codeception/base": "^2.2.3",
+    "codeception/verify": "~0.3.1"
+  },
   "authors": [
     {
       "name": "Vladimir Kuprienko",

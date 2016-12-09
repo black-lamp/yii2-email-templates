@@ -7,6 +7,8 @@ black-lamp/email-templates commits history
 - Added models for forms
 - Added new method to `bl\emailTemplates\providers\LanguageProviderInterface`
 - Added new methods to `bl\emailTemplates\data\Template`
+- Added tests
+
 ### Changed
 - Using `Query` instead `ActiveRecord` in `bl\emailTemplates\providers\DbLanguageProvider`
 - Active Record models replaced from `bl\emailTemplates\entities` namespace to `bl\emailTemplates\models\entities`
