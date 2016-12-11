@@ -6,6 +6,7 @@ black-lamp/email-templates commits history
 - Added widgets
 - Added models for forms
 - Added new method to `bl\emailTemplates\providers\LanguageProviderInterface`
+- Added config language provider
 - Added new methods to `bl\emailTemplates\data\Template`
 - Added tests
 
