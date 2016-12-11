@@ -11,11 +11,14 @@ use bl\emailTemplates\models\forms\CreateForm;
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @copyright Copyright (c) Vladimir Kuprienko
  */
-class CreateFromTest extends \Codeception\Test\Unit
+class CreateFormTest extends \Codeception\Test\Unit
 {
+    /**
+     * @var \bl\emailTemplates\tests\UnitTester
+     */
     protected $tester;
 
-    public function testCreateForm()
+    public function testFormSave()
     {
         $model = new CreateForm([
             'key' => 'test',

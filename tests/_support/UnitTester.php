@@ -1,5 +1,5 @@
 <?php
-
+namespace bl\emailTemplates\tests;
 
 /**
  * Inherited Methods

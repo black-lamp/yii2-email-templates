@@ -2,4 +2,5 @@ class_name: UnitTester
 bootstrap: false
 modules:
     enabled:
-        - Yii2
+        - Yii2:
+            part: fixtures
