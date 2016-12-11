@@ -9,7 +9,13 @@ return [
     'bootstrap' => [],
 
     'components' => [
-        'db' => require(__DIR__ . '/db.php')
+        'db' => require(__DIR__ . '/db.php'),
+        'languageProvider' => [
+            'class' => \bl\emailTemplates\providers\DbLanguageProvider::className(),
+            'tableName' => 'language',
+            'idField' => 'id',
+            'nameField' => 'name'
+        ],
     ],
 
     'params' => [],

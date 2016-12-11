@@ -1,18 +1,17 @@
 <?php
 namespace bl\emailTemplates\tests\unit\providers;
 
-use bl\emailTemplates\providers\ConfigLanguageProvider;
 use bl\emailTemplates\providers\LanguageProviderInterface;
 
 /**
- * Test case for ConfigLanguageProvider
+ * Test case for DbLanguageProviderTest
  *
  * @link https://github.com/black-lamp/yii2-email-templates
  * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @copyright Copyright (c) Vladimir Kuprienko
  */
-class ConfigLanguageProviderTest extends \Codeception\Test\Unit
+class DbLanguageProviderTest extends \Codeception\Test\Unit
 {
     /**
      * @var \bl\emailTemplates\tests\UnitTester
@@ -24,19 +23,9 @@ class ConfigLanguageProviderTest extends \Codeception\Test\Unit
      */
     protected $object;
 
-    /**
-     * @inheritdoc
-     */
     public function _before()
     {
-        $this->object = new ConfigLanguageProvider([
-            'languages' => [
-                1 => 'English',
-                2 => 'Russian',
-                3 => 'Ukrainian'
-            ],
-            'defaultLanguage' => [1 => 'English']
-        ]);
+        $this->object = \Yii::$app->languageProvider;
     }
 
     public function testInstanceOf()

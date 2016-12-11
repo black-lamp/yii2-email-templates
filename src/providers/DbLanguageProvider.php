@@ -29,17 +29,17 @@ class DbLanguageProvider extends Object implements LanguageProviderInterface
     /**
      * @var string Name of table in database
      */
-    public $tableName;
+    public $tableName = 'language';
 
     /**
      * @var string Name of field with primary key
      */
-    public $idField;
+    public $idField = 'id';
 
     /**
      * @var string Name of field with language name
      */
-    public $nameField;
+    public $nameField = 'name';
 
     /**
      * @var ActiveRecord[]
