@@ -16,6 +16,9 @@ return [
             'idField' => 'id',
             'nameField' => 'name'
         ],
+        'templateManager' => [
+            'class' => \bl\emailTemplates\components\TemplateManager::className()
+        ],
     ],
 
     'params' => [],
