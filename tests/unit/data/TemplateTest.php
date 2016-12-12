@@ -125,7 +125,8 @@ class TemplateTest extends \Codeception\Test\Unit
         $objects = Template::buildTemplates($models);
 
         expect('Method should return array', $objects)->internalType('array');
-        expect('Array item should be a Template object', $objects[0])->internalType('object');
+        expect('Array item should be a Template object', get_class($objects[0]))
+            ->equals(Template::class);
 
         expect('Objects in array should have subject from array of models', $objects[0]->getSubject())
             ->equals($subject);

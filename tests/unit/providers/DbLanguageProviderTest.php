@@ -1,6 +1,8 @@
 <?php
 namespace bl\emailTemplates\tests\unit\providers;
 
+use Yii;
+
 use bl\emailTemplates\providers\LanguageProviderInterface;
 
 /**
@@ -25,7 +27,7 @@ class DbLanguageProviderTest extends \Codeception\Test\Unit
 
     public function _before()
     {
-        $this->object = \Yii::$app->languageProvider;
+        $this->object = Yii::$app->get('languageProvider');
     }
 
     public function testInstanceOf()
