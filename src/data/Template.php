@@ -148,7 +148,7 @@ class Template
     {
         $result = [];
         foreach($models as $model) {
-            $result = self::buildTemplate($model);
+            $result[] = self::buildTemplate($model);
         }
 
         return $result;
