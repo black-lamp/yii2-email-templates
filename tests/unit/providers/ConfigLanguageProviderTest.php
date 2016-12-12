@@ -62,4 +62,42 @@ class ConfigLanguageProviderTest extends \Codeception\Test\Unit
         $language = $this->object->getNameByID(1);
         expect('Method must return string', $language)->internalType('string');
     }
+
+    public function testLanguageOptionException()
+    {
+        $this->setExpectedException('yii\base\InvalidConfigException');
+
+        new ConfigLanguageProvider([
+            'defaultLanguage' => [1 => 'English']
+        ]);
+    }
+
+    public function testLanguageOptionException2()
+    {
+        $this->setExpectedException('yii\base\InvalidConfigException');
+
+        new ConfigLanguageProvider([
+            'languages' => 'Wrong configuration',
+            'defaultLanguage' => [1 => 'English']
+        ]);
+    }
+
+    public function testDefaultLanguageException()
+    {
+        $this->setExpectedException('yii\base\InvalidConfigException');
+
+        new ConfigLanguageProvider([
+            'languages' => [1 => 'English']
+        ]);
+    }
+
+    public function testDefaultLanguageException2()
+    {
+        $this->setExpectedException('yii\base\InvalidConfigException');
+
+        new ConfigLanguageProvider([
+            'languages' => [1 => 'English'],
+            'defaultLanguage' => 'Wrong configuration'
+        ]);
+    }
 }
