@@ -1,7 +1,7 @@
 black-lamp/email-templates commits history
 ------------------------------------------
 
-## [Under development]
+## [2.0.0]
 ### Added
 - Added widgets
 - Added models for forms
