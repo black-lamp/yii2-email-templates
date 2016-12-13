@@ -1,8 +1,9 @@
 <?php
-namespace bl\emailTemplates\tests\unit\models\forms;
+namespace tests\unit\models\forms;
 
-use bl\emailTemplates\tests\fixtures\TemplateFixture;
-use bl\emailTemplates\tests\fixtures\TranslationFixture;
+use tests\fixtures\TemplateFixture;
+use tests\fixtures\TranslationFixture;
+
 use bl\emailTemplates\models\forms\EditForm;
 
 /**
@@ -16,7 +17,7 @@ use bl\emailTemplates\models\forms\EditForm;
 class EditFormTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 

@@ -6,5 +6,5 @@ defined('VENDOR_DIR') or define('VENDOR_DIR', __DIR__ . '/../../..');
 require_once(VENDOR_DIR . '/autoload.php');
 require_once(VENDOR_DIR . '/yiisoft/yii2/Yii.php');
 
-Yii::setAlias('@app', __DIR__);
+Yii::setAlias('@tests', __DIR__);
 Yii::setAlias('@vendor', VENDOR_DIR);

@@ -1,5 +1,5 @@
 <?php
-namespace bl\emailTemplates\tests\unit\models\forms;
+namespace tests\unit\models\forms;
 
 use bl\emailTemplates\models\forms\CreateForm;
 
@@ -14,7 +14,7 @@ use bl\emailTemplates\models\forms\CreateForm;
 class CreateFormTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 

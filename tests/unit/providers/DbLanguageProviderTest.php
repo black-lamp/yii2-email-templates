@@ -1,5 +1,5 @@
 <?php
-namespace bl\emailTemplates\tests\unit\providers;
+namespace tests\unit\providers;
 
 use Yii;
 
@@ -16,7 +16,7 @@ use bl\emailTemplates\providers\LanguageProviderInterface;
 class DbLanguageProviderTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 

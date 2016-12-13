@@ -1,5 +1,5 @@
 <?php
-namespace bl\emailTemplates\tests\unit\providers;
+namespace tests\unit\providers;
 
 use bl\emailTemplates\providers\ConfigLanguageProvider;
 use bl\emailTemplates\providers\LanguageProviderInterface;
@@ -15,7 +15,7 @@ use bl\emailTemplates\providers\LanguageProviderInterface;
 class ConfigLanguageProviderTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 

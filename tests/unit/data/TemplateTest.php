@@ -1,5 +1,5 @@
 <?php
-namespace bl\emailTemplates\tests\unit\data;
+namespace tests\unit\data;
 
 use bl\emailTemplates\data\Template;
 use bl\emailTemplates\models\entities\EmailTemplateTranslation;
@@ -15,7 +15,7 @@ use bl\emailTemplates\models\entities\EmailTemplateTranslation;
 class TemplateTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 

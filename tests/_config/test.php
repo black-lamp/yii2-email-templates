@@ -2,10 +2,10 @@
 return [
     'id' => 'email-templates-test',
     'class' => 'yii\console\Application',
-    'basePath' => Yii::getAlias('@app'),
+    'basePath' => Yii::getAlias('@tests'),
 
     'vendorPath' => Yii::getAlias('@vendor'),
-    'runtimePath' => Yii::getAlias('@app/_output'),
+    'runtimePath' => Yii::getAlias('@tests/_output'),
     'bootstrap' => [],
 
     'components' => [

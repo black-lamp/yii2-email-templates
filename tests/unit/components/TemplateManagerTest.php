@@ -1,10 +1,11 @@
 <?php
-namespace bl\emailTemplates\tests\unit\components;
+namespace tests\unit\components;
 
 use Yii;
 
-use bl\emailTemplates\tests\fixtures\TemplateFixture;
-use bl\emailTemplates\tests\fixtures\TranslationFixture;
+use tests\fixtures\TemplateFixture;
+use tests\fixtures\TranslationFixture;
+
 use bl\emailTemplates\data\Template;
 
 /**
@@ -18,7 +19,7 @@ use bl\emailTemplates\data\Template;
 class TemplateManagerTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \bl\emailTemplates\tests\UnitTester
+     * @var \UnitTester
      */
     protected $tester;
 
