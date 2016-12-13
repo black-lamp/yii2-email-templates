@@ -32,25 +32,24 @@ class DbLanguageProviderTest extends \Codeception\Test\Unit
 
     public function testInstanceOf()
     {
-        expect('Class must be instance of LanguageProviderInterface', $this->object)
-            ->isInstanceOf(LanguageProviderInterface::class);
+        $this->assertInstanceOf(LanguageProviderInterface::class, $this->object, 'Class must be instance of LanguageProviderInterface');
     }
 
     public function testGetLanguages()
     {
         $languages = $this->object->getLanguages();
-        expect('Method should return array', $languages)->internalType('array');
+        $this->assertInternalType('array', $languages, 'Method should return array');
     }
 
     public function testGetDefaultLanguage()
     {
         $defaultLanguage = $this->object->getDefault();
-        expect('Method should return array', $defaultLanguage)->internalType('array');
+        $this->assertInternalType('array', $defaultLanguage, 'Method should return array');
     }
 
     public function testGetLanguageById()
     {
         $language = $this->object->getNameByID(1);
-        expect('Method must return string', $language)->internalType('string');
+        $this->assertInternalType('string', $language, 'Method should return string');
     }
 }

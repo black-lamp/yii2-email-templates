@@ -35,13 +35,13 @@ class TemplateTest extends \Codeception\Test\Unit
     public function testGetSubject()
     {
         $subject = $this->object->getSubject();
-        expect('Method should return string', $subject)->internalType('string');
+        $this->assertInternalType('string', $subject, 'Method should return string');
     }
 
     public function testGetBody()
     {
         $body = $this->object->getBody();
-        expect('Method should return string', $body)->internalType('string');
+        $this->assertInternalType('string', $body, 'Method should return string');
     }
 
     public function testParseSubject()
@@ -49,8 +49,7 @@ class TemplateTest extends \Codeception\Test\Unit
         $param = 'parsed subject';
         $this->object->parseSubject(['{subject}' => $param]);
 
-        expect("Method should replace `{subject}` to `$param`", $this->object->getSubject())
-            ->contains($param);
+        $this->assertContains($param, $this->object->getSubject(), "Method should replace `{subject}` to `$param`");
     }
 
     public function testParseBody()
@@ -58,8 +57,7 @@ class TemplateTest extends \Codeception\Test\Unit
         $param = 'parsed body';
         $this->object->parseBody(['{body}' => $param]);
 
-        expect("Method should replace `{body}` to `$param`", $this->object->getBody())
-            ->contains($param);
+        $this->assertContains($param, $this->object->getBody(), "Method should replace `{body}` to `$param`");
     }
 
     public function testParse()
@@ -73,10 +71,8 @@ class TemplateTest extends \Codeception\Test\Unit
         $bodyParam = 'parsed subject';
         $object->parse(['{subject}' => $subjectParam], ['{body}' => $bodyParam]);
 
-        expect("Method should replace `{subject}` to `$subjectParam`", $object->getSubject())
-            ->contains($subjectParam);
-        expect("Method should replace `{body}` to `$bodyParam`", $object->getBody())
-            ->contains($bodyParam);
+        $this->assertContains($subjectParam, $object->getSubject(), "Method should replace `{subject}` to `$subjectParam`");
+        $this->assertContains($bodyParam, $object->getBody(), "Method should replace `{body}` to `$bodyParam`");
     }
 
     public function testBuildTemplate()
@@ -93,10 +89,8 @@ class TemplateTest extends \Codeception\Test\Unit
 
         $object = Template::buildTemplate($model);
 
-        expect('Method must get subject from AR model', $object->getSubject())
-            ->equals($subject);
-        expect('Method must get body from AR model', $object->getBody())
-            ->equals($body);
+        $this->assertEquals($subject, $object->getSubject(), 'Method must get subject from AR model');
+        $this->assertEquals($body, $object->getBody(), 'Method must get body from AR model');
     }
 
     public function testBuildTemplates()
@@ -124,13 +118,10 @@ class TemplateTest extends \Codeception\Test\Unit
         /** @var Template[] $objects */
         $objects = Template::buildTemplates($models);
 
-        expect('Method should return array', $objects)->internalType('array');
-        expect('Array item should be a Template object', get_class($objects[0]))
-            ->equals(Template::class);
+        $this->assertInternalType('array', $objects, 'Method should return array');
+        $this->assertEquals(Template::class, get_class($objects[0]), 'Array item should be a Template object');
 
-        expect('Objects in array should have subject from array of models', $objects[0]->getSubject())
-            ->equals($subject);
-        expect('Objects in array should have body from array of models', $objects[0]->getBody())
-            ->equals($body);
+        $this->assertEquals($subject, $objects[0]->getSubject(), 'Objects in array should have subject from array of models');
+        $this->assertEquals($body, $objects[0]->getBody(), 'Objects in array should have body from array of models');
     }
 }

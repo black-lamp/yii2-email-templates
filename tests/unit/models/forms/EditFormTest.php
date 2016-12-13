@@ -47,7 +47,7 @@ class EditFormTest extends \Codeception\Test\Unit
         $model->subject = "Modified template subject";
         $model->body = "Modified template body";
 
-        expect('Model should save modified data', $model->save())->true();
-        expect('Model should not have error', $model->hasErrors())->false();
+        $this->assertTrue($model->save(), 'Model should save modified data');
+        $this->assertFalse($model->hasErrors(), 'Model should not have error');
     }
 }

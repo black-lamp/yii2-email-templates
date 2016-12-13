@@ -47,16 +47,14 @@ class TemplateManagerTest extends \Codeception\Test\Unit
     {
         $template = $this->object->getTemplate('test', 1);
 
-        expect('Method should return Template class object', get_class($template))
-            ->equals(Template::class);
+        $this->assertEquals(Template::class, get_class($template), 'Method should return Template class object');
     }
 
     public function testGetTemplates()
     {
         $templates = $this->object->getTemplates('test');
 
-        expect('Method should return array', $templates)->internalType('array');
-        expect('Array item should be a Template object', get_class($templates[0]))
-            ->equals(Template::class);
+        $this->assertInternalType('array', $templates, 'Method should return array');
+        $this->assertEquals(Template::class, get_class($templates[0]), 'Array item should be a Template object');
     }
 }

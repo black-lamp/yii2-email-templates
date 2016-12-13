@@ -21,13 +21,13 @@ class CreateFormTest extends \Codeception\Test\Unit
     public function testFormSave()
     {
         $model = new CreateForm([
-            'key' => 'test',
+            'key' => 'test-template',
             'languageId' => 1,
             'subject' => 'Subject test',
             'body' => 'Body test'
         ]);
 
-        expect('Model should save form', $model->save())->true();
-        expect('Model should not have errors', $model->hasErrors())->false();
+        $this->assertTrue($model->save(), 'Model should save form');
+        $this->assertFalse($model->hasErrors(), 'Model should not have errors');
     }
 }
