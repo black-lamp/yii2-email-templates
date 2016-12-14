@@ -102,6 +102,6 @@ This method return a [Template](https://github.com/black-lamp/yii2-email-templat
 Yii::$app->mailer->compose()
     // ...
     ->setSubject($template->subject)
-    ->setHtmlBody($templtae->body)
+    ->setHtmlBody($template->body)
     // ...
 ```
