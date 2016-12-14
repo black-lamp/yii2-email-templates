@@ -119,7 +119,7 @@ class TemplateTest extends \Codeception\Test\Unit
         $objects = Template::buildTemplates($models);
 
         $this->assertInternalType('array', $objects, 'Method should return array');
-        $this->assertEquals(Template::class, get_class($objects[0]), 'Array item should be a Template object');
+        $this->assertInstanceOf(Template::class, $objects[0], 'Array item should be a Template object');
 
         $this->assertEquals($subject, $objects[0]->getSubject(), 'Objects in array should have subject from array of models');
         $this->assertEquals($body, $objects[0]->getBody(), 'Objects in array should have body from array of models');

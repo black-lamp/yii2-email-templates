@@ -2,6 +2,7 @@
 namespace tests\unit\models\forms;
 
 use bl\emailTemplates\models\forms\CreateForm;
+use bl\emailTemplates\models\forms\TemplateForm;
 
 /**
  * Test case for CreateForm model
@@ -18,16 +19,29 @@ class CreateFormTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
-    public function testFormSave()
+    /**
+     * @var \bl\emailTemplates\models\forms\CreateForm
+     */
+    protected $object;
+
+    public function _before()
     {
-        $model = new CreateForm([
+        $this->object = new CreateForm([
             'key' => 'test-template',
             'languageId' => 1,
             'subject' => 'Subject test',
             'body' => 'Body test'
         ]);
+    }
 
-        $this->assertTrue($model->save(), 'Model should save form');
-        $this->assertFalse($model->hasErrors(), 'Model should not have errors');
+    public function testInstanceOf()
+    {
+        $this->assertInstanceOf(TemplateForm::class, $this->object, 'Form should extends TemplateForm');
+    }
+
+    public function testFormSave()
+    {
+        $this->assertTrue($this->object->save(), 'Model should save form');
+        $this->assertFalse($this->object->hasErrors(), 'Model should not have errors');
     }
 }

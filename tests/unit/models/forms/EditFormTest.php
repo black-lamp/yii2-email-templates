@@ -5,6 +5,7 @@ use tests\fixtures\TemplateFixture;
 use tests\fixtures\TranslationFixture;
 
 use bl\emailTemplates\models\forms\EditForm;
+use bl\emailTemplates\models\forms\TemplateForm;
 
 /**
  * Test case for EditForm model
@@ -22,6 +23,11 @@ class EditFormTest extends \Codeception\Test\Unit
     protected $tester;
 
     /**
+     * @var \bl\emailTemplates\models\forms\EditForm
+     */
+    protected $object;
+
+    /**
      * @inheritdoc
      */
     public function _before()
@@ -36,19 +42,24 @@ class EditFormTest extends \Codeception\Test\Unit
                 'dataFile' => codecept_data_dir('translation.php')
             ]
         ]);
+
+        $this->object = new EditForm([
+            'templateId' => 1,
+            'languageId' => 1
+        ]);
+    }
+
+    public function testInstanceOf()
+    {
+        $this->assertInstanceOf(TemplateForm::class, $this->object, 'Form should extends TemplateForm');
     }
 
     public function testFormSave()
     {
-        $model = new EditForm([
-            'templateId' => 1,
-            'languageId' => 1
-        ]);
+        $this->object->subject = "Modified template subject";
+        $this->object->body = "Modified template body";
 
-        $model->subject = "Modified template subject";
-        $model->body = "Modified template body";
-
-        $this->assertTrue($model->save(), 'Model should save modified data');
-        $this->assertFalse($model->hasErrors(), 'Model should not have error');
+        $this->assertTrue($this->object->save(), 'Model should save modified data');
+        $this->assertFalse($this->object->hasErrors(), 'Model should not have error');
     }
 }

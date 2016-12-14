@@ -48,7 +48,7 @@ class TemplateManagerTest extends \Codeception\Test\Unit
     {
         $template = $this->object->getTemplate('test', 1);
 
-        $this->assertEquals(Template::class, get_class($template), 'Method should return Template class object');
+        $this->assertInstanceOf(Template::class, $template, 'Method should return Template class object');
     }
 
     public function testGetTemplates()
@@ -56,6 +56,6 @@ class TemplateManagerTest extends \Codeception\Test\Unit
         $templates = $this->object->getTemplates('test');
 
         $this->assertInternalType('array', $templates, 'Method should return array');
-        $this->assertEquals(Template::class, get_class($templates[0]), 'Array item should be a Template object');
+        $this->assertInstanceOf(Template::class, $templates[0], 'Array item should be a Template object');
     }
 }
