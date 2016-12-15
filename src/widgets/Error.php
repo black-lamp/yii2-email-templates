@@ -1,4 +1,10 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace bl\emailTemplates\widgets;
 
 use yii\base\Widget;
@@ -8,10 +14,7 @@ use yii\base\Widget;
  *
  * @property array $errors
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class Error extends Widget
 {
@@ -19,6 +22,7 @@ class Error extends Widget
      * @var array
      */
     public $errors;
+
 
     /**
      * @inheritdoc

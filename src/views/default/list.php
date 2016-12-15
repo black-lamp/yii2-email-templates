@@ -13,8 +13,8 @@ use bl\emailTemplates\EmailTemplates;
  *
  * @link https://github.com/black-lamp/yii2-email-templates
  * @license GNU Public License
- * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @copyright Copyright (c) Vladimir Kuprienko
+ * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
 
 $this->title = EmailTemplates::t('breadcrumbs', 'Email templates list');

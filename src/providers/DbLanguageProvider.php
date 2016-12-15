@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\providers;
 
 use Yii;
@@ -14,10 +20,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $idField
  * @property string $nameField
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class DbLanguageProvider extends Object implements LanguageProviderInterface
 {

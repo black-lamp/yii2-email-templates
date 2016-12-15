@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\components;
 
 use yii\base\Object;
@@ -10,10 +16,7 @@ use bl\emailTemplates\models\entities\EmailTemplate as TemplateEntity;
 /**
  * Component for work with email templates
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class TemplateManager extends Object
 {

@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\controllers;
 
 use Yii;
@@ -17,11 +23,7 @@ use bl\emailTemplates\providers\LanguageProviderInterface;
 /**
  * Default controller for the `EmailTemplatesModule` module
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
- *
  */
 class DefaultController extends Controller
 {
@@ -34,6 +36,7 @@ class DefaultController extends Controller
      * @var LanguageProviderInterface
      */
     protected $_languageProvider;
+
 
     /**
      * @inheritdoc

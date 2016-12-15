@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\providers;
 
 use yii\base\InvalidConfigException;
@@ -22,11 +28,8 @@ use yii\base\Object;
  *
  * @property array $languages
  * @property array $defaultLanguage
- *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class ConfigLanguageProvider extends Object implements LanguageProviderInterface
 {

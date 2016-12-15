@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\models\entities;
 
 use yii\db\ActiveRecord;
@@ -17,8 +23,6 @@ use bl\emailTemplates\EmailTemplates;
  * @property EmailTemplate $template
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
  */
 class EmailTemplateTranslation extends ActiveRecord
 {
@@ -44,6 +48,9 @@ class EmailTemplateTranslation extends ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getTemplate()
     {
         return $this->hasOne(EmailTemplate::className(), ['id' => 'template_id']);

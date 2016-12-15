@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\data;
 
 use bl\emailTemplates\models\entities\EmailTemplateTranslation;
@@ -9,10 +15,7 @@ use bl\emailTemplates\models\entities\EmailTemplateTranslation;
  * @property string $subject
  * @property string $body
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class Template
 {
@@ -20,11 +23,11 @@ class Template
      * @var string Subject of email
      */
     private $subject;
-
     /**
      * @var string Body of email
      */
     private $body;
+
 
     /**
      * Getter for `subject`

@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ */
+
 namespace bl\emailTemplates\models\forms;
 
 use yii\base\Exception;
@@ -9,16 +15,13 @@ use bl\emailTemplates\models\entities\EmailTemplateTranslation;
 /**
  * Model for edit form
  *
- * @property $key
- * @property $languageId
- * @property $templateId
- * @property $subject
- * @property $body
+ * @property string $key
+ * @property integer $languageId
+ * @property integer $templateId
+ * @property string $subject
+ * @property string $body
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class EditForm extends TemplateForm
 {
@@ -28,11 +31,11 @@ class EditForm extends TemplateForm
      * @var EmailTemplate
      */
     protected $_template;
-
     /**
      * @var EmailTemplateTranslation
      */
     protected $_translation;
+
 
     /**
      * @inheritdoc

@@ -1,4 +1,10 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace bl\emailTemplates\widgets;
 
 use Yii;
@@ -11,10 +17,7 @@ use bl\emailTemplates\providers\LanguageProviderInterface;
  *
  * @property array $currentLanguage
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class Language extends Widget
 {
@@ -22,6 +25,7 @@ class Language extends Widget
      * @var array
      */
     public $currentLanguage;
+
 
     /**
      * @inheritdoc
