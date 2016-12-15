@@ -1,9 +1,15 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\components;
 
 use Yii;
 
-use tests\fixtures\TemplateFixture;
+use tests\unit\TestCase;
 use tests\fixtures\TranslationFixture;
 
 use bl\emailTemplates\data\Template;
@@ -11,37 +17,34 @@ use bl\emailTemplates\data\Template;
 /**
  * Test case for TemplateManager component
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+ * @property \UnitTester $tester
+ *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
-class TemplateManagerTest extends \Codeception\Test\Unit
+class TemplateManagerTest extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
     /**
      * @var \bl\emailTemplates\components\TemplateManager
      */
-    protected $object;
+    private $object;
 
-    public function _before()
+
+    /**
+     * @inheritdoc
+     */
+    public function fixtures()
     {
-        $this->object = Yii::$app->get('templateManager');
-
-        $this->tester->haveFixtures([
-            'template' => [
-                'class' => TemplateFixture::className(),
-                'dataFile' => codecept_data_dir('template.php')
-            ],
+        return [
             'translation' => [
                 'class' => TranslationFixture::className(),
                 'dataFile' => codecept_data_dir('translation.php')
             ]
-        ]);
+        ];
+    }
+
+    public function _before()
+    {
+        $this->object = Yii::$app->get('templateManager');
     }
 
     public function testGetTemplate()

@@ -1,5 +1,13 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\data;
+
+use tests\unit\TestCase;
 
 use bl\emailTemplates\data\Template;
 use bl\emailTemplates\models\entities\EmailTemplateTranslation;
@@ -7,22 +15,17 @@ use bl\emailTemplates\models\entities\EmailTemplateTranslation;
 /**
  * Test case for Template class
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+ * @property \UnitTester $tester
+ *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
-class TemplateTest extends \Codeception\Test\Unit
+class TemplateTest extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
     /**
      * @var \bl\emailTemplates\data\Template
      */
-    protected $object;
+    private $object;
+
 
     public function _before()
     {

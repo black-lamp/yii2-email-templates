@@ -1,7 +1,13 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\models\forms;
 
-use tests\fixtures\TemplateFixture;
+use tests\unit\TestCase;
 use tests\fixtures\TranslationFixture;
 
 use bl\emailTemplates\models\forms\EditForm;
@@ -10,39 +16,32 @@ use bl\emailTemplates\models\forms\TemplateForm;
 /**
  * Test case for EditForm model
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+ * @property \UnitTester $tester
+ *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
-class EditFormTest extends \Codeception\Test\Unit
+class EditFormTest extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
     /**
      * @var \bl\emailTemplates\models\forms\EditForm
      */
-    protected $object;
+    private $object;
+
 
     /**
      * @inheritdoc
      */
+    public function fixtures()
+    {
+        return [
+            'translation' => [
+                'class' => TranslationFixture::className()
+            ]
+        ];
+    }
+
     public function _before()
     {
-        $this->tester->haveFixtures([
-            'template' => [
-                'class' => TemplateFixture::className(),
-                'dataFile' => codecept_data_dir('template.php')
-            ],
-            'translation' => [
-                'class' => TranslationFixture::className(),
-                'dataFile' => codecept_data_dir('translation.php')
-            ]
-        ]);
-
         $this->object = new EditForm([
             'templateId' => 1,
             'languageId' => 1

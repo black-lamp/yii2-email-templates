@@ -1,8 +1,9 @@
-black-lamp/email-templates commits history
+black-lamp/yii2-email-templates commits history
 ------------------------------------------
 
 ## [Under development]
 - Improved tests
+- Updated code style
 
 ## [2.0.0]
 ### Added

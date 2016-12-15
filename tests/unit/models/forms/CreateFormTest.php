@@ -1,5 +1,13 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\models\forms;
+
+use tests\unit\TestCase;
 
 use bl\emailTemplates\models\forms\CreateForm;
 use bl\emailTemplates\models\forms\TemplateForm;
@@ -7,22 +15,17 @@ use bl\emailTemplates\models\forms\TemplateForm;
 /**
  * Test case for CreateForm model
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+ * @property \UnitTester $tester
+ *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
-class CreateFormTest extends \Codeception\Test\Unit
+class CreateFormTest extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
     /**
      * @var \bl\emailTemplates\models\forms\CreateForm
      */
-    protected $object;
+    private $object;
+
 
     public function _before()
     {

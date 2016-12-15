@@ -1,4 +1,10 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\providers;
 
 use bl\emailTemplates\providers\ConfigLanguageProvider;
@@ -8,10 +14,7 @@ use bl\emailTemplates\providers\ConfigLanguageProvider;
  *
  * @property \bl\emailTemplates\providers\LanguageProviderInterface $object
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
 class ConfigLanguageProviderTest extends ProviderTestCase
 {

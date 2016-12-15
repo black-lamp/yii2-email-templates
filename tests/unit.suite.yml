@@ -3,5 +3,4 @@ bootstrap: false
 modules:
     enabled:
         - Asserts
-        - Yii2:
-            part: fixtures
+        - Yii2

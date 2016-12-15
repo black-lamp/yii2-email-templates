@@ -1,27 +1,30 @@
 <?php
+/**
+ * @license GNU Public License
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @link https://github.com/black-lamp/yii2-email-templates
+ */
+
 namespace tests\unit\providers;
+
+use tests\unit\TestCase;
 
 use bl\emailTemplates\providers\LanguageProviderInterface;
 
 /**
  * Base test case for providers
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
+ * @property \UnitTester $tester
+ *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
- * @copyright Copyright (c) Vladimir Kuprienko
  */
-class ProviderTestCase extends \Codeception\Test\Unit
+class ProviderTestCase extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
     /**
      * @var \bl\emailTemplates\providers\ConfigLanguageProvider
      */
     protected $object;
+
 
     public function testInstanceOf()
     {

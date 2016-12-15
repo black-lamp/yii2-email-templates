@@ -14,5 +14,4 @@ extensions:
 modules:
     config:
         Yii2:
-          cleanup: false
           configFile: 'tests/_config/app.php'
