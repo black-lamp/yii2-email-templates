@@ -1,12 +1,12 @@
 black-lamp/yii2-email-templates commits history
 ------------------------------------------
 
-## [Under development]
+## [2.1.0] - 2016-12-19
 - Improved tests
 - Updated code style
 - Changed license
 
-## [2.0.0]
+## [2.0.0] - 2016-12-13
 ### Added
 - Added widgets
 - Added models for forms
