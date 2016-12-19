@@ -3,7 +3,7 @@
   "description": "Module for adding templates for email letters across dashboard",
   "keywords": ["yii2", "module", "email", "template", "delivery"],
   "type": "yii2-extension",
-  "license": "GNU Public License",
+  "license": "BSD 3-Clause License",
   "support": {
     "source": "https://github.com/black-lamp/yii2-email-templates",
     "issues": "https://github.com/black-lamp/yii2-email-templates/issues"

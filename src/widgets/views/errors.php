@@ -6,8 +6,8 @@
  * @var array $errors
  *
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @copyright Copyright (c) Vladimir Kuprienko
+ * @license BSD 3-Clause License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
 ?>

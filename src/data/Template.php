@@ -1,8 +1,8 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @license GNU Public License
  * @copyright Copyright (c) Vladimir Kuprienko
+ * @license BSD 3-Clause License
  */
 
 namespace bl\emailTemplates\data;

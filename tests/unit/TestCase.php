@@ -1,8 +1,8 @@
 <?php
 /**
- * @license GNU Public License
- * @copyright Copyright (c) Vladimir Kuprienko
  * @link https://github.com/black-lamp/yii2-email-templates
+ * @copyright Copyright (c) Vladimir Kuprienko
+ * @license BSD 3-Clause License
  */
 
 namespace tests\unit;
