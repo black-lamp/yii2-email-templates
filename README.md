@@ -2,6 +2,7 @@ Email templates module for Yii2
 ===============================
 Module for adding templates for email letters across dashboard
 
+[![Build Status](https://travis-ci.org/black-lamp/yii2-email-templates.svg?branch=master)](https://travis-ci.org/black-lamp/yii2-email-templates)
 [![Latest Stable Version](https://poser.pugx.org/black-lamp/yii2-email-templates/v/stable)](https://packagist.org/packages/black-lamp/yii2-email-templates)
 [![Latest Unstable Version](https://poser.pugx.org/black-lamp/yii2-email-templates/v/unstable)](https://packagist.org/packages/black-lamp/yii2-email-templates)
 [![License](https://poser.pugx.org/black-lamp/yii2-email-templates/license)](https://packagist.org/packages/black-lamp/yii2-email-templates)

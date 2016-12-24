@@ -3,7 +3,7 @@
   "description": "Module for adding templates for email letters across dashboard",
   "keywords": ["yii2", "module", "email", "template", "delivery"],
   "type": "yii2-extension",
-  "license": "BSD 3-Clause License",
+  "license": "BSD-3-Clause",
   "support": {
     "source": "https://github.com/black-lamp/yii2-email-templates",
     "issues": "https://github.com/black-lamp/yii2-email-templates/issues"
@@ -15,8 +15,8 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": ">=2.0.4",
-    "yiisoft/yii2-bootstrap": "*"
+    "yiisoft/yii2": "^2.0.4",
+    "yiisoft/yii2-bootstrap": "^2.0.0"
   },
   "require-dev": {
     "codeception/codeception": "*",
@@ -27,7 +27,7 @@
     {
       "name": "Vladimir Kuprienko",
       "email": "vldmr.kuprienko@gmail.com",
-      "role": "Creator of extension"
+      "role": "lead"
     }
   ],
   "autoload": {
