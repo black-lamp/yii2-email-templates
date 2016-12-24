@@ -1,7 +1,7 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=development_test_db',
+    'dsn' => 'sqlite:' . Yii::getAlias('@tests/_output/test.db'),
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

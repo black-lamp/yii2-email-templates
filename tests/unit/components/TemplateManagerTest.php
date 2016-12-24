@@ -7,6 +7,7 @@
 
 namespace tests\unit\components;
 
+use tests\unit\DbTestCase;
 use Yii;
 
 use tests\unit\TestCase;
@@ -21,7 +22,7 @@ use bl\emailTemplates\data\Template;
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
-class TemplateManagerTest extends TestCase
+class TemplateManagerTest extends DbTestCase
 {
     /**
      * @var \bl\emailTemplates\components\TemplateManager
@@ -36,14 +37,15 @@ class TemplateManagerTest extends TestCase
     {
         return [
             'translation' => [
-                'class' => TranslationFixture::className(),
-                'dataFile' => codecept_data_dir('translation.php')
+                'class' => TranslationFixture::className()
             ]
         ];
     }
 
     public function _before()
     {
+        parent::_before();
+
         $this->object = Yii::$app->get('templateManager');
     }
 

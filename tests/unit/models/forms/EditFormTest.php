@@ -7,6 +7,7 @@
 
 namespace tests\unit\models\forms;
 
+use tests\unit\DbTestCase;
 use tests\unit\TestCase;
 use tests\fixtures\TranslationFixture;
 
@@ -20,7 +21,7 @@ use bl\emailTemplates\models\forms\TemplateForm;
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
-class EditFormTest extends TestCase
+class EditFormTest extends DbTestCase
 {
     /**
      * @var \bl\emailTemplates\models\forms\EditForm
@@ -42,6 +43,8 @@ class EditFormTest extends TestCase
 
     public function _before()
     {
+        parent::_before();
+
         $this->object = new EditForm([
             'templateId' => 1,
             'languageId' => 1
