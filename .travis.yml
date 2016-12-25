@@ -1,9 +1,10 @@
 language: php
 
 php:
-  - 7.0
-  - 5.6
   - 5.5
+  - 5.6
+  - 7.0
+  - 7.1
 
 # environment variable used in test suite
 env: TEST_ENVIRONMENT=travis
@@ -20,9 +21,8 @@ cache:
 # install dependencies
 install:
   - travis_retry composer self-update
-  - travis_retry composer global require "codeception/codeception:2.2.x@dev"
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
-  - travis_retry composer install --prefer-dist
+  - travis_retry composer install --prefer-dist --no-interaction
 
 before_script:
   - vendor/bin/codecept build
