@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -47,7 +47,7 @@ class EmailTemplate extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => EmailTemplates::t('model', 'ID'),
+            'id'  => EmailTemplates::t('model', 'ID'),
             'key' => EmailTemplates::t('model', 'Key'),
         ];
     }

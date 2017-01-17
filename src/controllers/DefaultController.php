@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -77,6 +77,8 @@ class DefaultController extends Controller
             if(!$form->save()) {
                 $errors = $form->getErrors();
             }
+
+            return $this->redirect('list');
         }
 
         $currentLanguage = [

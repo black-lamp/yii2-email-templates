@@ -15,12 +15,12 @@ composer require black-lamp/yii2-email-templates
 ```
 or add
 ```json
-"black-lamp/yii2-email-templates": "2.*.*"
+"black-lamp/yii2-email-templates": "^3.0.0"
 ```
 to the require section of your composer.json.
 #### Applying migrations
 ```
-yii migrate --migrationPath=@vendor/black-lamp/yii2-email-templates/migrations
+yii migrate --migrationPath=@vendor/black-lamp/yii2-email-templates/src/migrations
 ```
 #### Add module to application config
 Backend module for create, edit and delete email templates
@@ -28,9 +28,9 @@ Backend module for create, edit and delete email templates
 'modules' => [
      // ...
      'email-templates' => [
-         'class' => bl\emailTemplates\EmailTemplates::className(),
+         'class' => bl\emailTemplates\EmailTemplates::class,
          'languageProvider' => [
-            'class' => bl\emailTemplates\providers\DbLanguageProvider::className(),
+            'class' => bl\emailTemplates\providers\DbLanguageProvider::class,
             'tableName' => 'language',
             'idField' => 'id',
             'nameField' => 'name'
@@ -61,7 +61,7 @@ Component for getting the templates from database
 'components' => [
     // ...
     'emailTemplates' => [
-        'class' => bl\emailTemplates\components\TemplateManager::className()
+        'class' => bl\emailTemplates\components\TemplateManager::class
     ],
 ]
 ```

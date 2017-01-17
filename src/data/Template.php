@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -22,11 +22,11 @@ class Template
     /**
      * @var string Subject of email
      */
-    private $subject;
+    private $_subject;
     /**
      * @var string Body of email
      */
-    private $body;
+    private $_body;
 
 
     /**
@@ -36,7 +36,7 @@ class Template
      */
     public function getSubject()
     {
-        return $this->subject;
+        return $this->_subject;
     }
 
     /**
@@ -46,7 +46,7 @@ class Template
      */
     public function getBody()
     {
-        return $this->body;
+        return $this->_body;
     }
 
     /**
@@ -57,8 +57,8 @@ class Template
      */
     public function __construct($subject, $body)
     {
-        $this->subject = $subject;
-        $this->body = $body;
+        $this->_subject = $subject;
+        $this->_body = $body;
     }
 
     /**
@@ -73,7 +73,7 @@ class Template
      */
     public function parseSubject($params)
     {
-        $this->subject = self::parseTemplate($this->subject, $params);
+        $this->_subject = self::parseTemplate($this->_subject, $params);
     }
 
     /**
@@ -89,7 +89,7 @@ class Template
      */
     public function parseBody($params)
     {
-        $this->body = self::parseTemplate($this->body, $params);
+        $this->_body = self::parseTemplate($this->_body, $params);
     }
 
 

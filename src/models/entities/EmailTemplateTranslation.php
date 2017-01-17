@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -40,11 +40,11 @@ class EmailTemplateTranslation extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => EmailTemplates::t('model', 'ID'),
+            'id'          => EmailTemplates::t('model', 'ID'),
             'template_id' => EmailTemplates::t('model', 'Template ID'),
             'language_id' => EmailTemplates::t('model', 'Language ID'),
-            'subject' => EmailTemplates::t('model', 'Subject'),
-            'body' => EmailTemplates::t('model', 'Body'),
+            'subject'     => EmailTemplates::t('model', 'Subject'),
+            'body'        => EmailTemplates::t('model', 'Body'),
         ];
     }
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -32,7 +32,7 @@ class TemplateManager extends Object
         /** @var TemplateEntity $template */
         $template = TemplateEntity::find()
             ->where(['key' => $key])
-            ->with(['translations' => function($query) use($language_id) {
+            ->with(['translations' => function ($query) use ($language_id) {
                 /** @var ActiveQuery $query */
                 $query->andWhere(['language_id' => $language_id]);
             }])

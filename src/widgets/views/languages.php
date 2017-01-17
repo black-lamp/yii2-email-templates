@@ -1,4 +1,10 @@
 <?php
+/**
+ * @link https://github.com/black-lamp/yii2-email-templates
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
+ * @license BSD 3-Clause License
+ */
+
 use yii\helpers\Url;
 use yii\helpers\Html;
 
@@ -9,9 +15,6 @@ use yii\helpers\Html;
  * @var array $languages
  * @var array $currentLanguage
  *
- * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
- * @license BSD 3-Clause License
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
 ?>

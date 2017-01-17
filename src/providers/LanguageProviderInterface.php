@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/black-lamp/yii2-email-templates
- * @copyright Copyright (c) Vladimir Kuprienko
+ * @copyright Copyright (c) 2016 Vladimir Kuprienko
  * @license BSD 3-Clause License
  */
 
@@ -16,13 +16,19 @@ interface LanguageProviderInterface
 {
     /**
      * @return array where key it's a primary key and value it's language name
-     * Example ['1' => 'English', '2' => 'Russian', ...]
+     * Example
+     * ```php
+     * ['1' => 'English', '2' => 'Russian', ...]
+     * ```
      */
     public function getLanguages();
 
     /**
      * @return array with default language
-     * Example ['1' => 'English']
+     * Example
+     * ```php
+     * ['1' => 'English']
+     * ```
      */
     public function getDefault();
 
