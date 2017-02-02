@@ -1,6 +1,10 @@
 black-lamp/yii2-email-templates commits history
 ------------------------------------------
 
+## [Under development]
+
+- Added checks for null in 'bl\emailTemplates\components\TemplateManager'
+
 ## [3.0.0] - 2017-01-17
 
 - (#4) Added TinyMCE instead textarea

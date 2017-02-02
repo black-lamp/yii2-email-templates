@@ -63,4 +63,18 @@ class TemplateManagerTest extends DbTestCase
         $this->assertInternalType('array', $templates, 'Method should return array');
         $this->assertInstanceOf(Template::class, $templates[0], 'Array item should be a Template object');
     }
+
+    public function testGetTemplateNull()
+    {
+        $template = $this->object->getTemplate('Nonexistent key', 1);
+
+        $this->assertEquals(null, $template, 'Method should returns a null value');
+    }
+
+    public function testGetTemplatesNull()
+    {
+        $templates = $this->object->getTemplates('Nonexistent key', 1);
+
+        $this->assertEquals(null, $templates, 'Method should returns a null value');
+    }
 }

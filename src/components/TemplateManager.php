@@ -25,7 +25,7 @@ class TemplateManager extends Object
      *
      * @param string $key
      * @param integer $language_id
-     * @return Template
+     * @return null|Template
      */
     public function getTemplate($key, $language_id)
     {
@@ -38,14 +38,18 @@ class TemplateManager extends Object
             }])
             ->one();
 
-        return Template::buildTemplate($template->translations[0]);
+        if (!is_null($template)) {
+            return Template::buildTemplate($template->translations[0]);
+        }
+
+        return null;
     }
 
     /**
      * Getting email template models by key
      *
      * @param string $key
-     * @return Template[]
+     * @return null|Template[]
      */
     public function getTemplates($key)
     {
@@ -55,6 +59,10 @@ class TemplateManager extends Object
             ->with('translations')
             ->one();
 
-        return Template::buildTemplates($templates->translations);
+        if (!is_null($templates)) {
+            return Template::buildTemplates($templates->translations);
+        }
+
+        return null;
     }
 }
