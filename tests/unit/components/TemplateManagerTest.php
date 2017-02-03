@@ -77,4 +77,20 @@ class TemplateManagerTest extends DbTestCase
 
         $this->assertEquals(null, $templates, 'Method should returns a null value');
     }
+
+    public function testGetByLangOrFirst()
+    {
+        $byKey = $this->object->getByLangOrFirst('test', 2);
+        $this->assertInstanceOf(Template::class, $byKey, 'Method should return Template class object');
+        $this->assertEquals('Тест темы', $byKey->getSubject(), 'Method should returns translation by lang');
+        $this->assertEquals('Тест тела', $byKey->getBody(), 'Method should returns translation by lang');
+
+        $first = $this->object->getByLangOrFirst('test', 7);
+        $this->assertInstanceOf(Template::class, $first, 'Method should return Template class object');
+        $this->assertEquals('Test subject', $first->getSubject(), 'Method should return a first translation');
+        $this->assertEquals('Test body', $first->getBody(), 'Method should return a first translation');
+
+        $null = $this->object->getByLangOrFirst('Nonexistent key', 1);
+        $this->assertInternalType('null', $null, 'Method should returns null value');
+    }
 }

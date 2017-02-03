@@ -8,10 +8,10 @@
 namespace bl\emailTemplates\components;
 
 use yii\base\Object;
-use yii\db\ActiveQuery;
 
 use bl\emailTemplates\data\Template;
-use bl\emailTemplates\models\entities\EmailTemplate as TemplateEntity;
+use bl\emailTemplates\models\entities\EmailTemplate;
+use bl\emailTemplates\models\entities\EmailTemplateTranslation;
 
 /**
  * Component for work with email templates
@@ -29,17 +29,11 @@ class TemplateManager extends Object
      */
     public function getTemplate($key, $language_id)
     {
-        /** @var TemplateEntity $template */
-        $template = TemplateEntity::find()
-            ->where(['key' => $key])
-            ->with(['translations' => function ($query) use ($language_id) {
-                /** @var ActiveQuery $query */
-                $query->andWhere(['language_id' => $language_id]);
-            }])
-            ->one();
-
-        if (!is_null($template)) {
-            return Template::buildTemplate($template->translations[0]);
+        if ($template = EmailTemplateTranslation::findOne([
+            'template_id' => EmailTemplate::getIdByKey($key),
+            'language_id' => $language_id
+        ])) {
+            return Template::buildTemplate($template);
         }
 
         return null;
@@ -53,14 +47,38 @@ class TemplateManager extends Object
      */
     public function getTemplates($key)
     {
-        /** @var TemplateEntity $templates */
-        $templates = TemplateEntity::find()
-            ->where(['key' => $key])
-            ->with('translations')
-            ->one();
+        /** @var EmailTemplateTranslation[] $templates */
+        if ($templates = EmailTemplateTranslation::findAll([
+            'template_id' => EmailTemplate::getIdByKey($key)
+        ])) {
+            return Template::buildTemplates($templates);
+        }
 
-        if (!is_null($templates)) {
-            return Template::buildTemplates($templates->translations);
+        return null;
+    }
+
+
+    /**
+     * Get template
+     *
+     * @param string $key
+     * @param $languageId
+     * @return Template|null
+     */
+    public function getByLangOrFirst($key, $languageId)
+    {
+        $templateId = EmailTemplate::getIdByKey($key);
+
+        if ($template = EmailTemplateTranslation::findOne([
+            'template_id' => $templateId,
+            'language_id' => $languageId
+        ])) {
+            return Template::buildTemplate($template);
+        }
+        elseif ($templates = EmailTemplateTranslation::findAll([
+            'template_id' => $templateId
+        ])) {
+            return Template::buildTemplate($templates[0]);
         }
 
         return null;

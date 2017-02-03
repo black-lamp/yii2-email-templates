@@ -59,4 +59,18 @@ class EmailTemplate extends ActiveRecord
     {
         return $this->hasMany(EmailTemplateTranslation::className(), ['template_id' => 'id']);
     }
+
+    /**
+     * Get template id by key
+     *
+     * @param string $key Key of the template
+     * @return false|null|string
+     */
+    public static function getIdByKey($key)
+    {
+        return static::find()
+            ->select('id')
+            ->where(['key' => $key])
+            ->scalar();
+    }
 }

@@ -1,9 +1,10 @@
 black-lamp/yii2-email-templates commits history
 ------------------------------------------
 
-## [Under development]
+## [3.1.0] - 2017-02-03
 
 - Added checks for null in 'bl\emailTemplates\components\TemplateManager'
+- Added 'bl\emailTemplates\components\TemplateManager::getByLangOrFirst()' method
 
 ## [3.0.0] - 2017-01-17
 
