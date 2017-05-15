@@ -7,6 +7,7 @@
 
 namespace bl\emailTemplates\models\entities;
 
+use bl\multilang\behaviors\TranslationBehavior;
 use yii\db\ActiveRecord;
 
 use bl\emailTemplates\EmailTemplates;
@@ -18,6 +19,7 @@ use bl\emailTemplates\EmailTemplates;
  * @property string $key
  *
  * @property EmailTemplateTranslation[] $translations
+ * @property EmailTemplateTranslation $translation
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
@@ -38,6 +40,17 @@ class EmailTemplate extends ActiveRecord
     {
         return [
             [['key'], 'unique']
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'translation' => [
+                'class' => TranslationBehavior::className(),
+                'translationClass' => EmailTemplateTranslation::className(),
+                'relationColumn' => 'template_id'
+            ]
         ];
     }
 
